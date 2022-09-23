@@ -1,0 +1,109 @@
+Component,Feature,Skal flyttes til Github Projects,Flyttekommentar,Flyttet til Github Projects,Usertesting,Done ✔️,V1,V2,V3,Done,Documentation only,Comments
+AWS Account,SSO,x,,,x,x,,,,,,
+AWS Account,Configuration change logs,x,,,,,,,,,,wiz.io?
+AWS Account,Guardrails in control tower,x,,,,,,,,,,
+AWS Account,,,,,,,,,,,,
+,,,,,,,,,,,,
+Network,VPC,,,,x,x,,,,,,
+Network,Subnet,,,,x,x,,,,,,
+Network,Hosted zone (root domain),,,,x,x,,,,,,
+Network,Route53,,,,x,x,,,,,,
+Network,1 ALB for A-record,x,,,,,x,,,,,skal vi ha 1 alb for mangen applikasjonar?
+Network,/health for ALB target group,x,,,,,x,,,,,"Defaults to / today, should have sane default"
+Network,EC2 target group,,,,x,x,,,,,,
+Network,Auto-approval of new subdomains,x,,,,,,,,,,
+Network,Unique CIDR blocks per account?,x,,,,,,,,,,Do we need this? Pro: we can link VPCs easier if need. Can assign block to account from a list
+,,,,,,,,,,,,
+Containers,ECS Cluster,,,,x,x,,,,,,
+Containers,Github action for updating task definition,x,,,x,,,,,,,
+Containers,Recommended container storage location: ECR,x,,,x,,,,,,,"ECR, github, ??"
+Containers,minimal reference-app w/database,x,,,x,,,,,,,should be a part of golden path setup
+Containers,Service auto-scaling configuration,x,,,,,,,,,,Have a default policy for auto-scaling based on CPU? To show how it is done?
+Containers,Many applications w/1 VPC/ALB,x,,,x,,,,,,,
+Containers,CI/CD toolchain / GitOps - oppdaterar terraform repo,x,,,x,,,,,,,"Is it possible to run in Fargate, to avoid giving too much permissions for a Github Action? Or should we use wiz.io ?"
+,,,,,,,,,,,,
+Monitoring/logging,Cloudwatch + Grafana?,x,,,,,x,,,,,Managed Grafana not in Stockholm yet
+Monitoring/logging,Cloudwatch application logs,x,,,x,,,,,,,Documentation on how to use the logs
+Monitoring/logging,Metrics for use of golden path,x,,,x,,,,,,,
+Monitoring/logging,Deploy metrics,x,,,x,,,,,,,Oppsett fra Endre?
+Monitoring/logging,Metrics: Cloudwatch or Prometheus?,x,,,,,,x,,,,
+Monitoring/logging,Alerts: Cloudwatch or Grafana?,x,,,,,,x,,,,
+Monitoring/logging,Tracing - X-ray?,x,,,,,,x?,x,,,
+Monitoring/logging,Application Logging in ECS Which strategy?,x,,,x,,,,,,,
+Monitoring/logging,NAT gateway logs,x,,,,,,x,,,,https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway-cloudwatch.html
+Monitoring/logging,VPC Flow logs,x,,,,,,x,,,,https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html
+,,x,,,,,,,,,,
+,,,,,,,,,,,,
+Database,Storage: Aurora vs serverless?,x,,,x,,x,,,,,currently serverless
+Database,Configuration for more than 1 database instance?,x,,,,,,,,,,write & read?
+Database,Migrate to aurora from old database - Runbook heller ,x,,,,,x,,,,,Not sure if V1: Consider using existing RDS to save time for now: https://docs.google.com/document/d/13orKKnr8tvTK1V30UaCPdSs5s-XLyGmeHuniSXNqx9k/edit#heading=h.zcq8y1fge9zj
+Database,Connect from localhost - doc on how to ,x,,,x,,,,,,,We know of one team which does this extensively.
+Database,Security group for application,x,,,x,,,,,,,Missing inbound/outbound rules today
+Database,Example alarm bundled with golden path?,x,,,,,,,,,,A simple CPU alarm
+Database,"Enable ""performance insight"" ",,,,x,,,,,,,free tier have 7 days logs
+Database,schema migration,x,,,,,,,,,,Best practice - in CI/CD? How to deal with? Good point for documentation. Maybe have in reference-app?
+,,,,,,,,,,,,
+Div,"Testing (end to end, like Nightly for Okctl)",x,,,,,x,,,,,Idea: Use Cypress to run proper end 2 end test.
+Div,Dependabot,x,,,,,,,x,,,"It should notify whenever a repository uses old versions of:
+- Terraform provider
+- AWS provider
+- Golden path modules or templates"
+Div,IPv6,x,,,x,,,,,,,
+Div,Div,x,,,xxx,,,,,,,
+Div,"Golden path: linting, tfsec etc",x,,,,,,,,,,
+Div,Golden path: rename bootstrap to remote_state,,,,x,,,,,,,
+Div,Golden path: rename environment to project?,x,,,,,,,,,,Discuss
+Div,Golden path: static site module (S3),x,,,,,,,,,,
+Div,Security groups on all points where data flows,x,,,x,,x,,,,,
+Div,Golden path: Setup for high availability,x,,,,,,,,,,"Configuration and documentation of best practices for high availability. This includes, but is not limited to, ECS config, replicas, NAT gateways, guidelines for applications, etc... Do not use 0.0.0.0/0 for outbound traffic, but limit it"
+Div,"Golden path: Default alerts, like for instance downtime.",x,,,,,,,,,,"We can use Grafana, Cloudwatch, and/or Slack. Also see Better Uptime."
+Div,QA of Terraform config (Checkov),x,,,,,,x,,,,Check out if we want this or something similar.
+Div,Encrypted remote state,x,,,x,,x,,,,,"I just saw that Endre used encrypted remote stote, and Golden Path doesn't. We probably should I guess? See https://github.com/oslokommune/origo-aws-iac/blob/main/teknologi-dev/bootstrap/remote-state.tf"
+Div,ok script,x,,,,,,,,,,
+Div,Team kjøremiljø - opplæring på nye komponent,x,,,,,,,,,,Teamet må oppdatere kunnskap på riggen vi skal levere
+,,,,,,,,,,,,
+Documentation,CMS - setup and deploy,x,,,,,,,,,,
+Documentation,How to setup golden path and delete whole/parts,x,,,x,,,,,,,Should get reference-app up and running automaticly when bootstrapping app
+Documentation,Migrate app & db from existing VPC to new VPC - how to migrate parts first,x,,,,,,,,,,
+Documentation,What does golden path give you? Drawings and overview of components,x,,,x,,,,,,,WHY we have chosen the different components
+Documentation,"Best practice for high availability (ECS config, replicas, NAT gateways, guidelines for how to write applications, etc)",x,,,,,x,,,,,
+Documentation,Containers: ECS-CLI. Setup and follow logs,x,,,x,,,,,,,https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-developer-tools.html
+Documentation,RDS: Introduction setup and considerations,x,,,,,,,,,,
+Documentation,RDS: How to connect from localhost,x,,,x,,,,,,,
+Documentation,RDS: how to rotate passwords,x,,,,,,,,,,https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Overview.Encryption.Keys.html
+Documentation,"RDS: How to scale
+* Single instance
+* Read/write
+* Multi AZs/region
+* Auto scaling policy",x,,,,,,,,,,
+Documentation,RDS: backup/restore strategy Restoring example,x,,,,,,,,,,
+Documentation,RDS: parameter group for instances,x,,,,,,,,,,
+Documentation,RDS: cluster parameter group,x,,,,,,,,,,
+Documentation,RDS: upgrade strategy. Minor version upgrade auto upgrade,x,,,,,,,,,,
+Documentation,"RDS: encryption of userdata
+Row-based?
+keys",x,,,,,,,,,,
+Documentation,RDS: error logs - how to configure and how to debug local,x,,,,,,,,,,
+Documentation,RDS: alarms - how to configure and how to use,x,,,,,,,,,,
+Documentation,"Security: network, IAM etc on what you need to think about. Explicit rules",x,,,,,,,,,,
+Documentation,Better Uptime: best practice and setup,x,,,,,,,,,,
+Documentation,Health endpoint for ELB target group,x,,,,,,,,,,
+Documentation,Slack integration for alerts,x,,,,,,,,,,
+Documentation,Scaling: Multi-AZs & region for RDS & Application,x,,,,,,,,,,
+Documentation,ECS: how to run scheduled tasks,x,,,,,,,,,,
+Documentation,"VPC: how to configure, sane defaults, sharing with other account",x,,,,,,,,,,
+Documentation,"VPC: IPv4, IPv6, how to choose IP blocks",x,,,,,,,,,,
+Documentation,VPC: How to debug components in your VPC,x,,,,,,,,,,
+Documentation,VPC: subnets - what are the different subnets for?,x,,,,,,,,,,
+Documentation,Certificates: update/expiry handling,x,,,,,,,,,,
+Documentation,WAF/Shield,x,,,,,,,,,,
+Documentation,Logging: How to configure Logback?,x,,,,,,,,,,
+Documentation,Metrics: How to set up metrics for my application?,x,,,,,,,,,,
+Documentation,"Metrics: Document which metrics are the most relevant. And which datasources to use. Examples: Incoming requests count, response time, error rate.",x,,,,,,,,,,
+Documentation,How to authenticate with SSO for various use cases,x,,,,,,,,,,"Use cases:
+- Run terraform commands
+- Authenticate in an application
+
+(Source: https://trello.com/c/1W5Afmh8/699-lag-initielt-oppsett-for-golden-path-med-terraform-og-ecs)"
+,,,,,,,,,,,,
+Research,Terraform Enterprise  &&  Terraform cloud,,repo: kjoremiljo-admin-tasks,,,,,,,,,Evt spacelift.io
