@@ -44,10 +44,6 @@ Database,"Enable ""performance insight"" ",,,,x,,,,,,,free tier have 7 days logs
 Database,schema migration,x,,,,,,,,,,Best practice - in CI/CD? How to deal with? Good point for documentation. Maybe have in reference-app?
 ,,,,,,,,,,,,
 Div,"Testing (end to end, like Nightly for Okctl)",x,,,,,x,,,,,Idea: Use Cypress to run proper end 2 end test.
-Div,Dependabot,x,,,,,,,x,,,"It should notify whenever a repository uses old versions of:
-- Terraform provider
-- AWS provider
-- Golden path modules or templates"
 Div,IPv6,x,,,x,,,,,,,
 Div,Div,x,,,xxx,,,,,,,
 Div,"Golden path: linting, tfsec etc",x,,,,,,,,,,
@@ -55,7 +51,6 @@ Div,Golden path: rename bootstrap to remote_state,,,,x,,,,,,,
 Div,Golden path: rename environment to project?,x,,,,,,,,,,Discuss
 Div,Golden path: static site module (S3),x,,,,,,,,,,
 Div,Security groups on all points where data flows,x,,,x,,x,,,,,
-Div,Golden path: Setup for high availability,x,,,,,,,,,,"Configuration and documentation of best practices for high availability. This includes, but is not limited to, ECS config, replicas, NAT gateways, guidelines for applications, etc... Do not use 0.0.0.0/0 for outbound traffic, but limit it"
 Div,"Golden path: Default alerts, like for instance downtime.",x,,,,,,,,,,"We can use Grafana, Cloudwatch, and/or Slack. Also see Better Uptime."
 Div,QA of Terraform config (Checkov),x,,,,,,x,,,,Check out if we want this or something similar.
 Div,Encrypted remote state,x,,,x,,x,,,,,"I just saw that Endre used encrypted remote stote, and Golden Path doesn't. We probably should I guess? See https://github.com/oslokommune/origo-aws-iac/blob/main/teknologi-dev/bootstrap/remote-state.tf"
@@ -92,10 +87,5 @@ Documentation,WAF/Shield,x,,,,,,,,,,
 Documentation,Logging: How to configure Logback?,x,,,,,,,,,,
 Documentation,Metrics: How to set up metrics for my application?,x,,,,,,,,,,
 Documentation,"Metrics: Document which metrics are the most relevant. And which datasources to use. Examples: Incoming requests count, response time, error rate.",x,,,,,,,,,,
-Documentation,How to authenticate with SSO for various use cases,x,,,,,,,,,,"Use cases:
-- Run terraform commands
-- Authenticate in an application
-
-(Source: https://trello.com/c/1W5Afmh8/699-lag-initielt-oppsett-for-golden-path-med-terraform-og-ecs)"
 ,,,,,,,,,,,,
 Research,Terraform Enterprise  &&  Terraform cloud,,repo: kjoremiljo-admin-tasks,,,,,,,,,Evt spacelift.io

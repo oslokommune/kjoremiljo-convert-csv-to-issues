@@ -10,15 +10,16 @@ import (
 // gh issue create --repo yngvark/temp --title "Some title" --body "Some body"
 // gh issue create --repo yngvark/temp --title "Some title 2" --body "Some body 2"
 // .
-func CreateGhCommands(csvContents string, issueRepo string) ([]string, error) {
+func CreateGhCommands(csvContents string, issueRepo string, project string) ([]string, error) {
 	issues, err := parseIssuesFromCsv(csvContents)
 	if err != nil {
 		return []string{}, err
 	}
 
 	issues = removeDivLabel(issues)
+	issues = removeEmptyTitle(issues)
 	issues = removeNotMovingToGithub(issues)
-	commands := toCommands(issues, issueRepo)
+	commands := toCommands(issues, issueRepo, project)
 
 	return commands, nil
 }
@@ -70,6 +71,20 @@ func removeDivLabel(issues []Issue) []Issue {
 	return newIssues
 }
 
+func removeEmptyTitle(issues []Issue) []Issue {
+	newIssues := make([]Issue, 0)
+
+	for _, issue := range issues {
+		if len(issue.Title) == 0 {
+			continue
+		}
+
+		newIssues = append(newIssues, issue)
+	}
+
+	return newIssues
+}
+
 func removeNotMovingToGithub(issues []Issue) []Issue {
 	filtered := make([]Issue, 0)
 
@@ -82,7 +97,7 @@ func removeNotMovingToGithub(issues []Issue) []Issue {
 	return filtered
 }
 
-func toCommands(issues []Issue, issueRepo string) []string {
+func toCommands(issues []Issue, issueRepo string, _ string) []string {
 	commands := make([]string, 0)
 
 	for _, issue := range issues {

@@ -29,9 +29,9 @@ func TestCreateGithubIssues(t *testing.T) {
 			name: "Should work",
 			// nolint:lll
 			expect: []string{
-				"gh issue create --repo 'bob/issue-repo' --label 'AWS account' --title 'Guardrails in control tower' --body ''",
-				"gh issue create --repo 'bob/issue-repo' --label 'Containers' --title 'CI/CD toolchain / GitOps - oppdaterar terraform repo' --body 'Is it possible to run in Fargate, to avoid giving too much permissions for a Github Action? Or should we use wiz.io ?'",
-				"gh issue create --repo 'bob/issue-repo' --label '' --title 'IPv6' --body ''",
+				"gh issue create --repo 'bob/issue-repo' --project 'some-project' --label 'AWS account' --title 'Guardrails in control tower' --body ''",
+				"gh issue create --repo 'bob/issue-repo' --project 'some-project' --label 'Containers' --title 'CI/CD toolchain / GitOps - oppdaterar terraform repo' --body 'Is it possible to run in Fargate, to avoid giving too much permissions for a Github Action? Or should we use wiz.io ?'",
+				"gh issue create --repo 'bob/issue-repo' --project 'some-project' --label '' --title 'IPv6' --body ''",
 			},
 		},
 	}
@@ -43,7 +43,7 @@ func TestCreateGithubIssues(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			t.Parallel()
 
-			commands, err := convert.CreateGhCommands(csv, "bob/issue-repo")
+			commands, err := convert.CreateGhCommands(csv, "bob/issue-repo", "some-project")
 			require.NoError(t, err)
 
 			assert.Equal(t, len(tc.expect), len(commands))

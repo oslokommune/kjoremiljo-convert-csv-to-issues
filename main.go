@@ -18,9 +18,14 @@ func main() {
 }
 
 func run() error {
-	_, err := convert.CreateGhCommands(csv, "yngvark-temp")
+	commands, err := convert.CreateGhCommands(csv, "oslokommune/golden-path-iac", "Team Kjøremiljø")
 	if err != nil {
 		return fmt.Errorf("creating gh commands: %w", err)
+	}
+
+	fmt.Println("Commands:")
+	for _, cmd := range commands {
+		fmt.Println(cmd)
 	}
 
 	return nil
