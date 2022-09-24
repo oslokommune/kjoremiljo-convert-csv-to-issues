@@ -1,8 +1,8 @@
 Component,Feature,Skal flyttes til Github Projects,Flyttekommentar,Flyttet til Github Projects,Usertesting,Done ✔️,V1,V2,V3,Done,Documentation only,Comments
-AWS Account,SSO,x,,,x,x,,,,,,
-AWS Account,Configuration change logs,x,,,,,,,,,,wiz.io?
-AWS Account,Guardrails in control tower,x,,,,,,,,,,
-AWS Account,,,,,,,,,,,,
+AWS account,SSO,,,,x,x,,,,,,
+AWS account,Configuration change logs,x,,,,,,,,,,wiz.io?
+AWS account,Guardrails in control tower,x,,,,,,,,,,
+AWS account,,,,,,,,,,,,
 ,,,,,,,,,,,,
 Network,VPC,,,,x,x,,,,,,
 Network,Subnet,,,,x,x,,,,,,
@@ -22,16 +22,16 @@ Containers,Service auto-scaling configuration,x,,,,,,,,,,Have a default policy f
 Containers,Many applications w/1 VPC/ALB,x,,,x,,,,,,,
 Containers,CI/CD toolchain / GitOps - oppdaterar terraform repo,x,,,x,,,,,,,"Is it possible to run in Fargate, to avoid giving too much permissions for a Github Action? Or should we use wiz.io ?"
 ,,,,,,,,,,,,
-Monitoring/logging,Cloudwatch + Grafana?,x,,,,,x,,,,,Managed Grafana not in Stockholm yet
-Monitoring/logging,Cloudwatch application logs,x,,,x,,,,,,,Documentation on how to use the logs
-Monitoring/logging,Metrics for use of golden path,x,,,x,,,,,,,
-Monitoring/logging,Deploy metrics,x,,,x,,,,,,,Oppsett fra Endre?
-Monitoring/logging,Metrics: Cloudwatch or Prometheus?,x,,,,,,x,,,,
-Monitoring/logging,Alerts: Cloudwatch or Grafana?,x,,,,,,x,,,,
-Monitoring/logging,Tracing - X-ray?,x,,,,,,x?,x,,,
-Monitoring/logging,Application Logging in ECS Which strategy?,x,,,x,,,,,,,
-Monitoring/logging,NAT gateway logs,x,,,,,,x,,,,https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway-cloudwatch.html
-Monitoring/logging,VPC Flow logs,x,,,,,,x,,,,https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html
+Observability,Cloudwatch + Grafana?,x,,,,,x,,,,,Managed Grafana not in Stockholm yet
+Observability,Cloudwatch application logs,x,,,x,,,,,,,Documentation on how to use the logs
+Observability,Metrics for use of golden path,x,,,x,,,,,,,
+Observability,Deploy metrics,x,,,x,,,,,,,Oppsett fra Endre?
+Observability,Metrics: Cloudwatch or Prometheus?,x,,,,,,x,,,,
+Observability,Alerts: Cloudwatch or Grafana?,x,,,,,,x,,,,
+Observability,Tracing - X-ray?,x,,,,,,x?,x,,,
+Observability,Application Logging in ECS Which strategy?,x,,,x,,,,,,,
+Observability,NAT gateway logs,x,,,,,,x,,,,https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway-cloudwatch.html
+Observability,VPC Flow logs,x,,,,,,x,,,,https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html
 ,,x,,,,,,,,,,
 ,,,,,,,,,,,,
 Database,Storage: Aurora vs serverless?,x,,,x,,x,,,,,currently serverless
@@ -71,18 +71,10 @@ Documentation,Containers: ECS-CLI. Setup and follow logs,x,,,x,,,,,,,https://doc
 Documentation,RDS: Introduction setup and considerations,x,,,,,,,,,,
 Documentation,RDS: How to connect from localhost,x,,,x,,,,,,,
 Documentation,RDS: how to rotate passwords,x,,,,,,,,,,https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Overview.Encryption.Keys.html
-Documentation,"RDS: How to scale
-* Single instance
-* Read/write
-* Multi AZs/region
-* Auto scaling policy",x,,,,,,,,,,
 Documentation,RDS: backup/restore strategy Restoring example,x,,,,,,,,,,
 Documentation,RDS: parameter group for instances,x,,,,,,,,,,
 Documentation,RDS: cluster parameter group,x,,,,,,,,,,
 Documentation,RDS: upgrade strategy. Minor version upgrade auto upgrade,x,,,,,,,,,,
-Documentation,"RDS: encryption of userdata
-Row-based?
-keys",x,,,,,,,,,,
 Documentation,RDS: error logs - how to configure and how to debug local,x,,,,,,,,,,
 Documentation,RDS: alarms - how to configure and how to use,x,,,,,,,,,,
 Documentation,"Security: network, IAM etc on what you need to think about. Explicit rules",x,,,,,,,,,,
